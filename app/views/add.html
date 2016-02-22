@@ -1,1 +1,8 @@
-<p>This is the add view.</p>
+<div class="formly-container">
+    <form novalidate>
+        <h1>Add a Workbench eh?</h1>
+        <formly-form model="add.rental" fields="add.rentalFields" form="add.rentalForm">
+            <button type="submit" class="btn btn-primary" ng-disabled="add.rentalForm.$invalid">Submit</button>
+        </formly-form>
+    </form>
+</div>
