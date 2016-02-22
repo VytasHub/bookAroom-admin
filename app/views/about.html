@@ -1,0 +1,52 @@
+<!-- JS -->
+<!--  <script src="app.js"></script> -->
+<!-- <div class="container" ng-app="yoAdminApp" ng-controller="AboutCtrl"> -->
+<!-- Displays blue box sort order atributes
+  <div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchFish }}</p>
+  </div> -->
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search Workbench" ng-model="searchWorkbench">
+        </div>
+    </div>
+</form>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>
+                <a href="#" ng-click="sortType = 'city_town_name'; sortReverse = !sortReverse">
+          Workbench City/Town
+            <span ng-show="sortType == 'city_town_name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'city_town_name' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+            <td>
+                <a href="#" ng-click="sortType = 'address'; sortReverse = !sortReverse">
+          Workbench Address
+            <span ng-show="sortType == 'address' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'address' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+            <td>
+                <a href="#" ng-click="sortType = 'roomName'; sortReverse = !sortReverse">
+          Workbench room name
+            <span ng-show="sortType == 'roomName' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'roomName' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="workbenchList in workbench | orderBy:sortType:sortReverse | filter:searchWorkbench">
+            <td>{{ workbenchList.city_town_name }}</td>
+            <td>{{ workbenchList.address }}</td>
+            <td>{{ workbenchList.roomName }}</td>
+        </tr>
+    </tbody>
+</table>
+<!-- </div> -->
