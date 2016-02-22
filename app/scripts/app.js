@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name yoAdminApp
+ * @name bookAroomApp
  * @description
- * # yoAdminApp
+ * # bookAroomApp
  *
  * Main module of the application.
  */
 angular
-  .module('yoAdminApp', [
+  .module('bookAroomApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -28,6 +28,21 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
+      .when('/view', {
+        templateUrl: 'views/view.html',
+        controller: 'ViewCtrl',
+        controllerAs: 'view'
+      })
+      .when('/add', {
+        templateUrl: 'views/add.html',
+        controller: 'AddCtrl',
+        controllerAs: 'add'
       })
       .otherwise({
         redirectTo: '/'

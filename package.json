@@ -1,5 +1,5 @@
 {
-  "name": "yoadmin",
+  "name": "bookAroom",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
