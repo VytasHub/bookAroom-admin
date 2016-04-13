@@ -33,10 +33,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="workbenchList in workbench | orderBy:sortType:sortReverse | filter:searchWorkbench">
-            <td>{{ workbenchList.city_town_name }}</td>
-            <td>{{ workbenchList.address }}</td>
-            <td>{{ workbenchList.roomName }}</td>
+        <tr ng-repeat="item in WorkBenches | orderBy:sortType:sortReverse | filter:searchWorkbench">
+            <td>{{ item.Address }}</td>
+            <td>{{ item.CityTown }}</td>
+            <td>{{ item.WName }}</td>
         </tr>
     </tbody>
 </table>
+
+
+
+
+

@@ -1,5 +1,8 @@
 'use strict';
 
+
+
+// var fireHandeler = angular.module('fireHandeler', ['ngRoute', 'firebase']).constant('FIREBASE_URL', 'https://bookaroomfirebase.firebaseio.com/');
 /**
  * @ngdoc overview
  * @name bookAroomApp
@@ -17,7 +20,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'formly',
-    'formlyBootstrap'
+    'formlyBootstrap',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -38,9 +42,11 @@ angular
       // })
       .when('/view', {
         templateUrl: 'views/view.html',
-        controller: 'ViewCtrl',
-        controllerAs: 'view'
+        controller: 'WorkBenchController',
+        controllerAs: 'fireApp'
       })
+      
+
       .when('/add', {
         templateUrl: 'views/add.html',
         controller: 'AddCtrl',
@@ -49,4 +55,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+    .constant('FIREBASE_URL', 'https://bookaroomfirebase.firebaseio.com/');
