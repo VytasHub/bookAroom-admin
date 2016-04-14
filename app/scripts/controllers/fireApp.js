@@ -73,10 +73,17 @@ angular.module('bookAroomApp')
             var record = $scope.WorkBenches.$getRecord($scope.id); //to store the whole park we're editing
             console.log("record " + JSON.stringify(record));
 
-            // // record.key = fireBaseKey;
-            record.Address = $scope.Address;
-            record.name = $scope.name;
-            record.WName = $scope.WName;
+            //record.key = fireBaseKey;
+            record.Address = $scope.Address || null;
+            record.CityTown = $scope.CityTown || null;
+            record.WName = $scope.WName || null;
+            //record.Address = $scope.Address;
+            //ecord.CityTown = $scope.CityTown;
+            //record.WName = $scope.WName;
+
+
+
+
 
             // console.log("record " + JSON.stringify(record));
 
@@ -84,6 +91,20 @@ angular.module('bookAroomApp')
             // clearForm();
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //function to delete city
         $scope.deleteWorkbench = function(item) {
