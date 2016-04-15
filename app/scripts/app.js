@@ -2,7 +2,7 @@
 
 
 
-// var fireHandeler = angular.module('fireHandeler', ['ngRoute', 'firebase']).constant('FIREBASE_URL', 'https://bookaroomfirebase.firebaseio.com/');
+//var fireHandeler = angular.module('fireHandeler', ['ngRoute', 'firebase']).constant('FIREBASE_URL', 'https://bookaroomfirebase.firebaseio.com/');
 /**
  * @ngdoc overview
  * @name bookAroomApp
@@ -13,7 +13,7 @@
  */
 angular
     .module('bookAroomApp', [
-        'ngAnimate',
+        'firebase',
         'ngCookies',
         'ngResource',
         'ngRoute',
@@ -21,7 +21,7 @@ angular
         'ngTouch',
         'formly',
         'formlyBootstrap',
-        'firebase'
+        'ngAnimate'
     ])
     .config(function($routeProvider) {
         $routeProvider

@@ -42,7 +42,6 @@
   "dependencies": {
     "angular": "^1.5.0",
     "api-check": "^7.5.5",
-    "express": "^4.13.4",
-    "firebase": "^2.4.1"
+    "express": "^4.13.4"
   }
 }
