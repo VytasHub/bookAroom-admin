@@ -7,44 +7,187 @@
  * # AddCtrl
  * Controller of the bookAroomApp
  */
+
+
+//angular.module('bookAroomApp')
+//.controller('CitiesController', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+
+
 angular.module('bookAroomApp')
-    .controller('AddCtrl', function($scope, province) {
-        var vm = this;
+    .controller('AddCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 
-        // The model object that we reference
-        // on the  element in index.html
-        vm.rental = {};
 
-        // An array of our form fields with configuration
-        // and options set. We make reference to this in
-        // the 'fields' attribute on the  element
-        vm.rentalFields = [{
-            key: 'province',
-            type: 'select',
-            templateOptions: {
-                label: 'City/Town',
-                // Call our province service to get a list
-                // of provinces and territories
-                options: province.getProvinces()
-            },
-        }, {
-            key: 'address',
-            type: 'input',
-            templateOptions: {
-                type: 'text',
-                label: 'Workbench Address',
-                placeholder: 'Enter Address of Workbench',
-                required: true
-            }
-        }, {
-            key: 'Workbench room name',
-            type: 'input',
-            templateOptions: {
-                type: 'text',
-                label: 'Workbench room name',
-                placeholder: 'Enter room name',
-                required: true
-            }
-        }, ];
+        var IrlWorkBenches = new Firebase('https://bookaroomfirebase.firebaseio.com/WorkBenches');
+        var fireBaseKey = IrlWorkBenches.key();
+        $scope.WorkBenches = $firebaseArray(IrlWorkBenches);
 
-    });
+        //wired to the plus button
+        $scope.showForm = function() {
+
+            $scope.addFormShow = true; //turn on the addForm visibility
+
+            $scope.editFormShow = false; //turn off the editForm visibility
+            clearForm();
+        }
+
+        //wired to the minus button - to turn off the visibility of the addParks form
+        $scope.hideForm = function() {
+            $scope.addFormShow = false;
+
+        }
+
+        //clearing up the scope of the variables
+        function clearForm() {
+            $scope.Address = '';
+            $scope.CityTown = '';
+            $scope.WName = '';
+
+        }
+
+        //To check is Valid need to take in parameter 
+        $scope.addFormSubmit = function() {
+
+                //if(isValid){
+                $scope.WorkBenches.$add({
+
+                    Address: $scope.Address,
+                    CityTown: $scope.CityTown,
+                    WName: $scope.WName
+                });
+                //clearForm();
+                //}
+
+            } //$scope
+
+        //function to handle the edit button by pulling data based on id
+        $scope.showWorkbench = function(item) {
+            console.log("show button is called ");
+            $scope.addFormShow = false; //turn on the addForm visibility
+            $scope.editFormShow = true; //turn off the editForm visibility
+
+            $scope.Address = item.Address;
+            $scope.CityTown = item.CityTown;
+            $scope.WName = item.WName;
+            $scope.id = item.$id;
+             console.log("item " + JSON.stringify(item));
+        }
+
+        //function to handle actual update to the firebase db after edit
+        $scope.editFormSubmit = function() {
+            console.log("editFormSubmit is called ");
+
+            // var id = "WorkBench2"; //$scope.id; //to keep a reference of the product being edited
+            console.log("id:" + $scope.id);
+
+            // //console.log("Id "+id);
+            // //window.alert(id);
+            var record = $scope.WorkBenches.$getRecord($scope.id); //to store the whole park we're editing
+            console.log("record " + JSON.stringify(record));
+
+            //record.key = fireBaseKey;
+            record.Address = $scope.Address || null;
+            record.CityTown = $scope.CityTown || null;
+            record.WName = $scope.WName || null;
+            //record.Address = $scope.Address;
+            //ecord.CityTown = $scope.CityTown;
+            //record.WName = $scope.WName;
+
+
+
+
+
+            // console.log("record " + JSON.stringify(record));
+
+            $scope.WorkBenches.$save(record); //commit changes to firebase
+            // clearForm();
+
+        }
+
+
+        //function to delete city
+        $scope.deleteWorkbench = function(item) {
+            $scope.WorkBenches.$remove(item);
+
+        }
+
+    }]); //}]); Old version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// angular.module('bookAroomApp')
+//     .controller('AddCtrl', function($scope, province) {
+//         var vm = this;
+
+//         // The model object that we reference
+//         // on the  element in index.html
+//         vm.rental = {};
+
+//         // An array of our form fields with configuration
+//         // and options set. We make reference to this in
+//         // the 'fields' attribute on the  element
+//         vm.rentalFields = [{
+//             key: 'province',
+//             type: 'select',
+//             templateOptions: {
+//                 label: 'City/Town',
+//                 // Call our province service to get a list
+//                 // of provinces and territories
+//                 options: province.getProvinces()
+//             },
+//         }, {
+//             key: 'address',
+//             type: 'input',
+//             templateOptions: {
+//                 type: 'text',
+//                 label: 'Workbench Address',
+//                 placeholder: 'Enter Address of Workbench',
+//                 required: true
+//             }
+//         }, {
+//             key: 'Workbench room name',
+//             type: 'input',
+//             templateOptions: {
+//                 type: 'text',
+//                 label: 'Workbench room name',
+//                 placeholder: 'Enter room name',
+//                 required: true
+//             }
+//         }, ];
+
+//     });
+
+
+
+
+
+

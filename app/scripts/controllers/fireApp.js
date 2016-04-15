@@ -93,19 +93,6 @@ angular.module('bookAroomApp')
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         //function to delete city
         $scope.deleteWorkbench = function(item) {
             $scope.WorkBenches.$remove(item);
