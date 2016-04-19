@@ -33,6 +33,8 @@ angular.module('bookAroomApp')
 
         }
 
+       
+
         //To check is Valid need to take in parameter 
         $scope.addFormSubmit = function() {
 
@@ -42,8 +44,8 @@ angular.module('bookAroomApp')
                     Address: $scope.Address,
                     CityTown: $scope.CityTown,
                     WName: $scope.WName,
-                    booked: $scope.false,
-                    suspended: $scope.false
+                    Booked: $scope.booked = "free",
+                    Suspended: $scope.suspended = "InOrder"
                 });
                 //clearForm();
                 //}
@@ -98,6 +100,12 @@ angular.module('bookAroomApp')
         //function to delete city
         $scope.deleteWorkbench = function(item) {
             $scope.WorkBenches.$remove(item);
+
+        }
+
+        $scope.suspend = function() {
+            //$scope.WorkBenches.$remove(item);
+            console.log("Suspend Click");
 
         }
 

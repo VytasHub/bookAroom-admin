@@ -52,7 +52,9 @@ angular.module('bookAroomApp')
 
                     Address: $scope.Address,
                     CityTown: $scope.CityTown,
-                    WName: $scope.WName
+                    WName: $scope.WName,
+                    Booked: $scope.booked = false,
+                    Suspended: $scope.suspended = false
                 });
                 //clearForm();
                 //}

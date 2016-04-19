@@ -57,8 +57,9 @@
             <td>{{ item.CityTown }}</td>
             <td>{{ item.WName }}</td>
             <td>
-                <button class="btn btn-primary" ng-click="showWorkbench(item)">Edit</button>&nbsp;
+                <button class="btn btn-primary" ng-click="showWorkbench(item)">Edit</button>
                 <button class="btn btn-danger" ng-click="deleteWorkbench(item)">Remove</Button>
+                <button class="btn btn-susspend" ng-click="suspend(item)">Susspend</Button>
             </td>
         </tr>
     </tbody>
